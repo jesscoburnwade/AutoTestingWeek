@@ -1,0 +1,12 @@
+package org.jess.POMTesting;
+
+public class Constant {
+	public static final String AutoURL = "http://demoqa.com/autocomplete/";
+	public static final String DragURL = "http://demoqa.com/droppable/";
+	public static final String HomeURL = "http://demoqa.com/";
+	public static final String RegistURL = "http://demoqa.com/registration/";
+	public static final String SelectURL = "http://demoqa.com/selectable/";
+	public static final String AccordURL = "http://demoqa.com/accordion/";
+	public static final String Path_TestData = "C://Users//Admin//Documents//Automated Testing Materials//";
+	public static final String File_TestData = "DemoSiteDDT.xlsx";
+}
