@@ -1,0 +1,81 @@
+package org.jess.TestingCucumber;
+
+import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class stepDefs {
+	String username;
+	String password;
+	ChromeDriver driver;
+	
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	}
+	
+	@Given("^correctly formatted details$")
+	public void correctly_formatted_details() {
+		username = "Lauren";
+		password = "passw";
+	}
+
+	@When("^I navigate to demosite\\.com$")
+	public void i_navigate_to_demosite_com() {
+		driver.get("http://php.thedemosite.co.uk/");
+	}
+
+	@When("^I click create User$")
+	public void i_click_create_User() {
+		WebElement addUser = driver.findElement(By.xpath("/html/body/div/center/table/tbody/tr[2]/td/div/center/table/tbody/tr/td[2]/p/small/a[3]"));
+		addUser.click();
+	}
+
+	@When("^I fill in the details$")
+	public void i_fill_in_the_details() {
+		WebElement user = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/div/center/table/tbody/tr[1]/td[2]/p/input"));
+		WebElement pass = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/div/center/table/tbody/tr[2]/td[2]/p/input"));
+	
+		user.sendKeys(username);
+		pass.sendKeys(password);
+	}
+
+	@When("^I click register$")
+	public void i_click_register() {
+		WebElement save = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/div/center/table/tbody/tr[3]/td[2]/p/input"));
+		save.click();
+	}
+
+	@When("^I try to login$")
+	public void i_try_to_login() {
+		WebElement login = driver.findElement(By.xpath("/html/body/div/center/table/tbody/tr[2]/td/div/center/table/tbody/tr/td[2]/p/small/a[4]"));
+		login.click();
+		WebElement userLog = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/table/tbody/tr[1]/td[2]/p/input"));
+		WebElement passLog = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p/input"));
+		WebElement saveLog = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/form/div/center/table/tbody/tr/td[1]/table/tbody/tr[3]/td[2]/p/input"));
+		userLog.sendKeys(username);
+		passLog.sendKeys(password);
+		saveLog.click();
+	}
+
+	@Then("^I am successfully logged in$")
+	public void i_am_successfully_logged_in() {
+		WebElement check = driver.findElement(By.xpath("/html/body/table/tbody/tr/td[1]/big/blockquote/blockquote/font/center/b"));
+		assertEquals("**Successful Login**", check.getText());
+	}
+	
+	@After
+	public void teardown() {
+		driver.quit();
+	}
+}
