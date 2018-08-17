@@ -1,0 +1,7 @@
+package org.jess.BlackJackCucumber;
+
+public class BlackJackSteps {
+
+	private BlackJack blackJack;
+
+}

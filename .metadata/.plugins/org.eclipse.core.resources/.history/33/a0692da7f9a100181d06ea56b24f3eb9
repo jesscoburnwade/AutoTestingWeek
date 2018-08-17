@@ -1,0 +1,42 @@
+package org.jess.Assessment;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+
+public class LoggedInPage {
+	ChromeDriver driver;
+	
+	@FindBy (xpath = "//*[@id=\"menu_pim_viewPimModule\"]/a/span[2]")
+	WebElement PIMbutton;
+	@FindBy (xpath = "//*[@id=\"menu_pim_addEmployee\"]/span[2]")
+	WebElement addEmployeeButton;
+	
+	@FindBy (xpath = "//*[@id=\"firstName\"]")
+	WebElement addFirstName;
+	@FindBy (xpath = "//*[@id=\"middleName\"]")
+	WebElement addMiddleName;
+	@FindBy (xpath = "//*[@id=\"lastName\"]")
+	WebElement addLastName;
+	@FindBy (xpath = "//*[@id=\"location_inputfileddiv\"]/div/input")
+	WebElement addLocation;
+	
+	public void clickPIM() {
+		PIMbutton.click();
+	}
+	
+	public void clickAddEmployee() {
+		addEmployeeButton.click();
+	}
+	
+	public void addEmployee() {
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		addFirstName.sendKeys("John");
+		addMiddleName.sendKeys("David");
+		addLastName.sendKeys("Smith");
+		addLocation.sendKeys("Singapore Regional HQ");
+	}
+
+}

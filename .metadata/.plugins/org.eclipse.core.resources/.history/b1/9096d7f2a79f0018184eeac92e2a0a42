@@ -1,0 +1,18 @@
+package org.jess.POMTesting;
+
+import java.awt.Desktop.Action;
+import java.awt.Desktop.Action.*;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Actions.*;
+import org.openqa.selenium.support.FindBy;
+
+public class DraggablePage {
+	
+	@FindBy (id = "draggable")
+	private WebElement draggable;
+	
+	public void dragElement() {
+		Actions.dragAndDropBy(draggable, 300, 200).perform();
+	}
+}

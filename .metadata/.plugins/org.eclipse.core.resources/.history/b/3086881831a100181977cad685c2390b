@@ -1,0 +1,7 @@
+package org.jess.BlackJackCucumber;
+
+import junit.framework.TestCase;
+
+public class BlackJackSteps extends TestCase {
+
+}

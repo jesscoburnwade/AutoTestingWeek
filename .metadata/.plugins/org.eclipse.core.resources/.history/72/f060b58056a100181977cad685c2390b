@@ -1,0 +1,89 @@
+package org.jess.TeaTesting;
+
+import static org.junit.Assert.assertEquals;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class stepDefs {
+	ChromeDriver driver;
+	public ExtentTest test;
+	public static ExtentReports report;
+	public int i = 0;
+	
+	@Before
+	public void setup() {
+		i++;
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		if (i == 1) {
+			report = new ExtentReports(Constant.path + Constant.file, true);
+		}
+	}
+	
+	@After
+	public void teardown() {
+		driver.quit();
+		if (i == 2) {
+			report.flush();
+		}
+	}
+	
+	@Given("^the correct web address$")
+	public void the_correct_web_address() {
+		driver.get(Constant.homeURL);
+	}
+
+	@When("^I navigate to the 'Menu' page$")
+	public void i_navigate_to_the_Menu_page() throws InterruptedException {
+		test = report.startTest("Test Home page to Menu");
+		Home page = PageFactory.initElements(driver, Home.class);
+		page.Menu();
+		test.log(LogStatus.INFO, "Webpage loaded");
+		test.log(LogStatus.INFO, "Menu button clicked");
+	}
+
+	@Then("^I can browse a list of the available products\\.$")
+	public void i_can_browse_a_list_of_the_available_products() {
+		if (Constant.menuURL.equals(driver.getCurrentUrl())) {
+			test.log(LogStatus.PASS, "Menu button successfully changed to the correct page");
+		} else {
+			test.log(LogStatus.FAIL, "Menu button did not change to the correct page");
+		}
+		
+		report.endTest(test);
+		
+		assertEquals(Constant.menuURL, driver.getCurrentUrl());
+	}
+
+	@When("^I click the checkout button$")
+	public void i_click_the_checkout_button() throws InterruptedException {
+		test = report.startTest("Test Home page to Menu");
+		Home page = PageFactory.initElements(driver, Home.class);
+		driver.get(Constant.menuURL);
+		page.checkOut();
+	}
+
+	@Then("^I am taken to the checkout page$")
+	public void i_am_taken_to_the_checkout_page() {
+		if (Constant.checkoutURL.equals(driver.getCurrentUrl())) {
+			test.log(LogStatus.PASS, "Checkout button successfully changed to the correct page");
+		} else {
+			test.log(LogStatus.FAIL, "Checkout button did not change to the correct page");
+		}
+		
+		report.endTest(test);
+		assertEquals(Constant.checkoutURL, driver.getCurrentUrl());
+	}
+}

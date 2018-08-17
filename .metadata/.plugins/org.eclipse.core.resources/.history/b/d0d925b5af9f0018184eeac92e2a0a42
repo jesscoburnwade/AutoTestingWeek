@@ -1,0 +1,58 @@
+package org.jess.POMTesting;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class ItsDaTest{
+	
+	String url;
+	ChromeDriver driver;
+	
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+	}
+	
+	@Test
+	public void methodTest() {
+		driver.get("http://demoqa.com/");
+		driver.manage().window().maximize();
+		HomePage page = PageFactory.initElements(driver, HomePage.class);
+		page.openMenu();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement checkHome = driver.findElement(By.xpath("//*[@id=\"post-22\"]/header/h1"));
+		assertEquals("Home fine","Droppable",checkHome.getText());
+		DraggablePage drag = PageFactory.initElements(driver, DraggablePage.class);
+		drag.dragElement(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement checkDrag = driver.findElement(By.xpath("//*[@id=\"droppableview\"]/p"));
+		assertEquals("Drag drop fine","Dropped!", checkDrag.getText());
+	}
+	
+//	@Test
+//	public void testDrag() {
+//		driver.get("http://demoqa.com/droppable/");
+//		driver.manage().window().maximize();
+//		DraggablePage drag = PageFactory.initElements(driver, DraggablePage.class);
+//		drag.dragElement(driver);
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		WebElement check = driver.findElement(By.xpath("//*[@id=\"droppableview\"]/p"));
+//		assertEquals("Dropped!", check.getText());
+//		}
+	
+	@After
+	public void teardown() {
+		driver.quit();
+	}
+	
+
+}

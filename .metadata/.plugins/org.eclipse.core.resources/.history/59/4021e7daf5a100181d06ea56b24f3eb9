@@ -1,0 +1,6 @@
+package org.jess.Assessment;
+
+public class Constant {
+	static String loginURL = "https://qa-trials641.orangehrmlive.com/auth/login";
+	static String loggedInURL = "";
+}

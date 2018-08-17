@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testRunner (2)" project="Assessment" tests="10" started="10" failures="0" errors="2" ignored="7">
+  <testsuite name="org.jess.Assessment.testRunner" time="6.016">
+    <testsuite name="Feature: Using OrangeHRM" time="6.016">
+      <testsuite name="Scenario: Add an employee to the CRM" time="5.195" incomplete="true">
+        <error>java.lang.NullPointerException&#13;
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:882)&#13;
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:68)&#13;
+	at org.jess.Assessment.LoggedInPage.&lt;init&gt;(LoggedInPage.java:14)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)&#13;
+	at java.lang.Class.newInstance(Unknown Source)&#13;
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:131)&#13;
+	at org.openqa.selenium.support.PageFactory.initElements(PageFactory.java:64)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_click_the_PIM_tab(stepDefsAssess.java:64)&#13;
+	at ✽.And I click the PIM tab(org/jess/Assessment/assessment.feature:10)&#13;
+&#13;
+</error>
+        <testcase name="Given the login page" classname="Scenario: Add an employee to the CRM" time="5.132"/>
+        <testcase name="When I login" classname="Scenario: Add an employee to the CRM" time="0.059"/>
+        <testcase name="And I click the PIM tab" classname="Scenario: Add an employee to the CRM" time="0.003">
+          <error>java.lang.NullPointerException&#13;
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:882)&#13;
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:68)&#13;
+	at org.jess.Assessment.LoggedInPage.&lt;init&gt;(LoggedInPage.java:14)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)&#13;
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)&#13;
+	at java.lang.Class.newInstance(Unknown Source)&#13;
+	at org.openqa.selenium.support.PageFactory.instantiatePage(PageFactory.java:131)&#13;
+	at org.openqa.selenium.support.PageFactory.initElements(PageFactory.java:64)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_click_the_PIM_tab(stepDefsAssess.java:64)&#13;
+	at ✽.And I click the PIM tab(org/jess/Assessment/assessment.feature:10)&#13;
+&#13;
+</error>
+        </testcase>
+        <testcase name="And then the Add Employee Tab" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And I fill out the Add Employee Details correctly" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And I choose to create Login Details by clicking the appropriate button" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And I fill out the Login Details correctly" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And I click the Save button" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="Then I can search for the Employee I have just created" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And select them for inspection" classname="Scenario: Add an employee to the CRM" time="0.814" ignored="true"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

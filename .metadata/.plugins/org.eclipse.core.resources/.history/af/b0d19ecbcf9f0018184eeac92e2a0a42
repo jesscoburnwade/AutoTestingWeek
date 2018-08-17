@@ -1,0 +1,33 @@
+package org.jess.POMTesting;
+
+import java.awt.Desktop.Action;
+import java.awt.Desktop.Action.*;
+import java.awt.event.ActionEvent;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Actions.*;
+import org.openqa.selenium.support.FindBy;
+
+public class AccordionPage {
+	WebDriver driver;
+	
+	@FindBy (xpath = "//*[@id=\"tabs\"]/ul/li[1]")
+	WebElement defFunc;
+	@FindBy (xpath = "//*[@id=\"tabs\"]/ul/li[2]")
+	WebElement custIcons;
+	@FindBy (id = "ui-id-5")
+	WebElement sect1;
+	@FindBy (xpath = "//*[@id=\"toggle\"]/span")
+	WebElement toggleButton;
+	
+	public void accordion(WebDriver driver) {
+		Actions action = new Actions(driver);
+		custIcons.click();
+		toggleButton.click();		
+	}
+}

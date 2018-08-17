@@ -1,0 +1,5 @@
+package org.jess.TeaTesting;
+
+public class Constant {
+	static String url = "http://www.practiceselenium.com/menu.html";
+}

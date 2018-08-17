@@ -1,0 +1,7 @@
+package org.jess.DesignTestLogin;
+
+import junit.framework.TestCase;
+
+public class DaTest extends TestCase {
+
+}

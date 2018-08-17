@@ -1,0 +1,63 @@
+package org.jess.POMTesting;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+public class RegistPage {
+	@FindBy (id = "name_3_firstname")
+	private WebElement fname;
+	@FindBy (id = "name_3_lastname")
+	private WebElement lname;
+	@FindBy (id = "phone_9")
+	private WebElement phone;
+	@FindBy (id = "username")
+	private WebElement uname;
+	@FindBy (id = "email_1")
+	private WebElement email;
+	@FindBy (id = "description")
+	private WebElement desc;
+	@FindBy (id = "password_2")
+	private WebElement passw;
+	@FindBy (id = "confirm_password_password_2")
+	private WebElement confirmPassw;
+	
+	WebDriver driver;
+	FileInputStream file = null;
+	XSSFWorkbook workbook = null;
+	try {
+		file = new FileInputStream (Constant.Path_TestData + Constant.File_TestData);
+		workbook = new XSSFWorkbook(file);
+	}
+	catch (FileNotFoundException e1) {}
+	catch (IOException e2) {}
+	
+	XSSFSheet sheet = workbook.getSheetAt(0);
+	XSSFCell cell_fname = sheet.getRow(0).getCell(0);
+	XSSFCell cell_lname = sheet.getRow(0).getCell(1);
+	XSSFCell cell_phone = sheet.getRow(0).getCell(2);
+	XSSFCell cell_uname = sheet.getRow(0).getCell(3);
+	XSSFCell cell_email = sheet.getRow(0).getCell(4);
+	XSSFCell cell_desc = sheet.getRow(0).getCell(5);
+	XSSFCell cell_passw = sheet.getRow(0).getCell(6);
+	XSSFCell cell_confirmPassw = sheet.getRow(0).getCell(7);
+	public void inputMethod() {
+	fname.setText(cell_fname.getStringCellValue());
+	lname.setText(cell_lname.getStringCellValue());
+	phone.setText(cell_phone.getStringCellValue());
+	uname.setText(cell_uname.getStringCellValue());
+	email.setText(cell_email.getStringCellValue());
+	desc.setText(cell_desc.getStringCellValue());
+	passw.setText(cell_passw.getStringCellValue());
+	confirmPassw.setText(cell_confirmPassw.getStringCellValue());
+ }
+}

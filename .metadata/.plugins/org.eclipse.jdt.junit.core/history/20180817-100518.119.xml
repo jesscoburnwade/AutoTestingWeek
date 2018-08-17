@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testRunner (2)" project="Assessment" tests="10" started="10" failures="0" errors="2" ignored="5">
+  <testsuite name="org.jess.Assessment.testRunner" time="17.284">
+    <testsuite name="Feature: Using OrangeHRM" time="17.284">
+      <testsuite name="Scenario: Add an employee to the CRM" time="16.515" incomplete="true">
+        <error>java.lang.NullPointerException&#13;
+	at org.jess.Assessment.LoggedInPage.addEmployee(LoggedInPage.java:38)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_fill_out_the_Add_Employee_Details_correctly(stepDefsAssess.java:75)&#13;
+	at ✽.And I fill out the Add Employee Details correctly(org/jess/Assessment/assessment.feature:12)&#13;
+&#13;
+</error>
+        <testcase name="Given the login page" classname="Scenario: Add an employee to the CRM" time="3.694"/>
+        <testcase name="When I login" classname="Scenario: Add an employee to the CRM" time="0.092"/>
+        <testcase name="And I click the PIM tab" classname="Scenario: Add an employee to the CRM" time="0.294"/>
+        <testcase name="And then the Add Employee Tab" classname="Scenario: Add an employee to the CRM" time="12.433"/>
+        <testcase name="And I fill out the Add Employee Details correctly" classname="Scenario: Add an employee to the CRM" time="0.002">
+          <error>java.lang.NullPointerException&#13;
+	at org.jess.Assessment.LoggedInPage.addEmployee(LoggedInPage.java:38)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_fill_out_the_Add_Employee_Details_correctly(stepDefsAssess.java:75)&#13;
+	at ✽.And I fill out the Add Employee Details correctly(org/jess/Assessment/assessment.feature:12)&#13;
+&#13;
+</error>
+        </testcase>
+        <testcase name="And I choose to create Login Details by clicking the appropriate button" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And I fill out the Login Details correctly" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And I click the Save button" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="Then I can search for the Employee I have just created" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And select them for inspection" classname="Scenario: Add an employee to the CRM" time="0.767" ignored="true"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>

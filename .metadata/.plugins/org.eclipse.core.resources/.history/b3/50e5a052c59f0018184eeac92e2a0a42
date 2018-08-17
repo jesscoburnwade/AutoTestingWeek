@@ -1,0 +1,69 @@
+package org.jess.POMTesting;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class ItsDaTest{
+	
+	String url;
+	ChromeDriver driver;
+	
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+	}
+	
+	@Test
+	public void testHome() {
+		driver.get("http://demoqa.com/");
+		driver.manage().window().maximize();
+		HomePage page = PageFactory.initElements(driver, HomePage.class);
+		page.openMenu();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement check = driver.findElement(By.xpath("//*[@id=\"post-22\"]/header/h1"));
+		assertEquals("Draggable",check.getText());
+	}
+	
+	@Test
+	public void testDrag() {
+		driver.get("http://demoqa.com/droppable/");
+		driver.manage().window().maximize();
+		DraggablePage drag = PageFactory.initElements(driver, DraggablePage.class);
+		drag.dragElement(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement check = driver.findElement(By.xpath("//*[@id=\"droppableview\"]/p"));
+		assertEquals("Dropped!", check.getText());
+		}
+	
+	@Test
+	public void testSelect() {
+		driver.get("http://demoqa.com/selectable/");
+		driver.manage().window().maximize();
+		SelectPage select = PageFactory.initElements(driver, SelectPage.class);
+		select.selectElement(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement check1 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[2]"));
+		WebElement check2 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[7]"));
+		WebElement check3 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[4]"));
+		assertTrue("1 works",check1.isDisplayed());
+		assertTrue("2 works",check2.isDisplayed());
+		assertTrue("3 works",check3.isDisplayed());
+	
+	}
+	
+	@After
+	public void teardown() {
+		driver.quit();
+	}
+	
+
+}

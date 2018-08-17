@@ -1,0 +1,116 @@
+package org.jess.POMTesting;
+
+import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+public class ItsDaTest{
+	
+	public static ExtentReports report;
+	public ExtentTest test;
+	String url;
+	ChromeDriver driver;
+	
+	@Before
+	public void setup() {
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver = new ChromeDriver();
+	}
+	
+	@BeforeClass
+	public static void setupClass() {
+		report = new ExtentReports("C:\\Users\\Admin\\Desktop\\AutomationReports\\BasicReport.html", true);
+	}
+	
+	@AfterClass
+	public static void tearDownClass() {
+		report.endTest(test);
+		report.flush();
+	}
+	
+	@Test
+	public void testHome() {
+		test = report.startTest("Test Homepage buttons");
+		
+		driver.get("http://demoqa.com/");
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Window Maximised");
+		HomePage page = PageFactory.initElements(driver, HomePage.class);
+		page.openMenu();
+		WebElement check = driver.findElement(By.xpath("//*[@id=\"post-22\"]/header/h1"));
+		
+		if (check.getText() == "Draggable") {
+			test.log(LogStatus.PASS, "Clicking button opened new window");
+		} else { 
+			test.log(LogStatus.FAIL, "Clicking button didn't open new/correct window");
+		}
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		assertEquals("Draggable",check.getText());
+	}
+	
+	@Test
+	public void testDrag() {
+		test = report.startTest("Test Draggable page");
+		
+		driver.get("http://demoqa.com/droppable/");
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Window Maximised");
+		
+		DraggablePage drag = PageFactory.initElements(driver, DraggablePage.class);
+		drag.dragElement(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement check = driver.findElement(By.xpath("//*[@id=\"droppableview\"]/p"));
+		
+		if (check.getText() == "Dropped!") {
+			test.log(LogStatus.PASS, "Drag and drop works"); 
+		} else {
+			test.log(LogStatus.FAIL, "Drag and drop doesn't work");
+		}
+		
+		assertEquals("Dropped!", check.getText());
+	}
+	
+	@Test
+	public void testSelect() {
+		test = report.startTest("Test Select page");
+		
+		driver.get("http://demoqa.com/selectable/");
+		driver.manage().window().maximize();
+		test.log(LogStatus.INFO, "Window Maximised");
+		
+		SelectPage select = PageFactory.initElements(driver, SelectPage.class);
+		select.selectElement(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement check1 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[2]"));
+		WebElement check2 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[7]"));
+		WebElement check3 = driver.findElement(By.xpath("//*[@id=\"selectable_grid\"]/li[4]"));
+		if (check1.isDisplayed() && check2.isDisplayed() && check3.isDisplayed()) {
+			test.log(LogStatus.PASS, "Select works");
+		} else {
+			test.log(LogStatus.FAIL, "Select doesn't select right/multiple objects");
+		}
+		assertTrue("1 works",check1.isDisplayed());
+		assertTrue("2 works",check2.isDisplayed());
+		assertTrue("3 works",check3.isDisplayed());
+	
+	}
+	
+	@After
+	public void teardown() {
+		driver.quit();
+	}
+	
+
+}

@@ -1,0 +1,18 @@
+package org.jess.TeaTesting;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+
+public class HomeToMenu {
+	ChromeDriver driver;
+	
+	public void Menu() {
+		WebElement menuButton = driver.findElement(By.xpath("//*[@id=\"wsb-nav-00000000-0000-0000-0000-000450914915\"]/ul/li[3]/a"));
+		menuButton.click();
+	}
+}

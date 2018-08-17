@@ -1,0 +1,50 @@
+package org.jess.POMTesting;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+public class RegistPage {
+	@FindBy (id = "name_3_firstname")
+	WebElement fname;
+	@FindBy (id = "name_3_lastname")
+	WebElement lname;
+	@FindBy (id = "phone_9")
+	WebElement phone;
+	@FindBy (id = "username")
+	WebElement uname;
+	@FindBy (id = "email_1")
+	WebElement email;
+	@FindBy (id = "description")
+	WebElement desc;
+	@FindBy (id = "password_2")
+	WebElement passw;
+	@FindBy (id = "confirm_password_password_2")
+	WebElement confirmPassw;
+	
+	WebDriver driver;
+	FileInputStream file = null;
+	try {
+		file = new FileInputStream (Constant.Path_TestData + Constant.File_TestData);
+	}
+	catch (FileNotFoundException e1) {}
+	
+	XSSFWorkbook workbook = null;
+	try {
+		workbook = new XSSFWorkbook(file);
+	}
+	catch (IOException e2) {}
+	
+	XSSFSheet sheet = workbook.getSheetAt(0);
+	XSSFCell cell_fname = sheet.getRow(0).getCell(0);
+	
+}

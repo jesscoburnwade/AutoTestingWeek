@@ -1,0 +1,7 @@
+package com.qa.quickstart.FirstTest;
+
+import junit.framework.TestCase;
+
+public class TestOne extends TestCase {
+
+}

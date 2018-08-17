@@ -1,0 +1,14 @@
+package org.jess.POMTesting;
+
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.support.PageFactory;
+
+public class Constants {
+	public void testStuff(String url) {
+	WebDriver driver = null;
+	driver.get(url);
+	driver.manage().window().maximize();
+	}
+}

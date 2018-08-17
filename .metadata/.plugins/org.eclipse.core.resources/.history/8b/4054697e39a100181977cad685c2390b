@@ -1,0 +1,7 @@
+package org.jess.TestingCucumber;
+
+import junit.framework.TestCase;
+
+public class CucumberTest {
+
+}

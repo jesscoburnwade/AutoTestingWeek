@@ -1,0 +1,6 @@
+package org.jess.POMTesting;
+
+public class Constant {
+	public static final String Path_TestData = "C://Users//Admin//Documents//Automated Testing Materials";
+	public static final String File_TestData = "DemoSiteDDT.xlsx"
+}

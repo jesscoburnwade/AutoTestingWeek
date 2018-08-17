@@ -1,0 +1,66 @@
+package org.jess.TestingCucumber;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+
+import cucumber.api.PendingException;
+import cucumber.api.java.Before;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class stepDefs {
+	String username;
+	String password;
+	ChromeDriver driver;
+	
+	@Before
+	public void setup() {
+		driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver","C:\\Development\\chromedriver_win32\\chromedriver.exe");
+		driver.manage().window().maximize();
+	}
+	
+	@Given("^correctly formatted details$")
+	public void correctly_formatted_details() {
+		username = "Lauren";
+		password = "passw";
+	}
+
+	@When("^I navigate to demosite\\.com$")
+	public void i_navigate_to_demosite_com() {
+		driver.get("http://thedemosite.co.uk/");
+	}
+
+	@When("^I click create User$")
+	public void i_click_create_User() {
+		WebElement addUser = driver.findElement(By.xpath("/html/body/div/center/table/tbody/tr[2]/td/div/center/table/tbody/tr/td[2]/p/small/a[3]"));
+		addUser.click();
+	}
+
+	@When("^I fill in the details$")
+	public void i_fill_in_the_details() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^I click register$")
+	public void i_click_register() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^I try to login$")
+	public void i_try_to_login() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^I am successfully logged in$")
+	public void i_am_successfully_logged_in() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+}

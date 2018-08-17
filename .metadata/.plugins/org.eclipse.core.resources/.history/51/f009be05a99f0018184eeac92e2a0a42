@@ -1,0 +1,24 @@
+package org.jess.POMTesting;
+
+import java.awt.Desktop.Action;
+import java.awt.Desktop.Action.*;
+import java.awt.event.ActionEvent;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Actions.*;
+import org.openqa.selenium.support.FindBy;
+
+public class DraggablePage {
+	
+	@FindBy (xpath = "//*[@id=\"draggableview\"]/p")
+	private WebElement draggable;
+	
+	public void dragElement(WebDriver driver) {
+		
+		Actions action = new Actions(driver);
+		WebElement drop = driver.findElement(By.id("droppableview"));
+		action.dragAndDrop(draggable, drop).perform();
+	}
+}

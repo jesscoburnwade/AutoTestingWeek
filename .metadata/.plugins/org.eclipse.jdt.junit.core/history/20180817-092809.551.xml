@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="testRunner (2)" project="Assessment" tests="10" started="10" failures="0" errors="2" ignored="8">
+  <testsuite name="org.jess.Assessment.testRunner" time="0.771">
+    <testsuite name="Feature: Using OrangeHRM" time="0.771">
+      <testsuite name="Scenario: Add an employee to the CRM" time="0.004" incomplete="true">
+        <error>java.lang.NullPointerException&#13;
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;
+	at com.sun.proxy.$Proxy17.sendKeys(Unknown Source)&#13;
+	at org.jess.Assessment.LoginPage.Login(LoginPage.java:18)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_login(stepDefsAssess.java:50)&#13;
+	at ✽.When I login(org/jess/Assessment/assessment.feature:9)&#13;
+&#13;
+</error>
+        <testcase name="Given the login page" classname="Scenario: Add an employee to the CRM" time="0.001"/>
+        <testcase name="When I login" classname="Scenario: Add an employee to the CRM" time="0.003">
+          <error>java.lang.NullPointerException&#13;
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)&#13;
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)&#13;
+	at com.sun.proxy.$Proxy17.sendKeys(Unknown Source)&#13;
+	at org.jess.Assessment.LoginPage.Login(LoginPage.java:18)&#13;
+	at org.jess.Assessment.stepDefsAssess.i_login(stepDefsAssess.java:50)&#13;
+	at ✽.When I login(org/jess/Assessment/assessment.feature:9)&#13;
+&#13;
+</error>
+        </testcase>
+        <testcase name="And I click the PIM tab" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And then the Add Employee Tab" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And I fill out the Add Employee Details correctly" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And I choose to create Login Details by clicking the appropriate button" classname="Scenario: Add an employee to the CRM" time="0.001" ignored="true"/>
+        <testcase name="And I fill out the Login Details correctly" classname="Scenario: Add an employee to the CRM" time="0.002" ignored="true"/>
+        <testcase name="And I click the Save button" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="Then I can search for the Employee I have just created" classname="Scenario: Add an employee to the CRM" time="0.0" ignored="true"/>
+        <testcase name="And select them for inspection" classname="Scenario: Add an employee to the CRM" time="0.761" ignored="true"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testrun>
